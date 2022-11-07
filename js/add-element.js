@@ -43,9 +43,8 @@ function changeStyle() {
   } else if ($(this).hasClass('complete')) {
     $(this).removeClass('complete');
     $(this).addClass('cool');
-  } else if ($(this).hasClass('hot')) {
-    $(this).removeClass('hot');
-    $(this).addClass('cool');
+  } else if (!$(this).hasClass('hot')) {
+    $(this).addClass('hot');
   }
 }
 

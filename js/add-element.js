@@ -12,14 +12,24 @@ $('.hot').each(function () {
 $('#one').next().next().text('milk');
 // add a new element by clicking the plus sign
 $('#todo').append('<li>candy</li>');
+$('#todo').append('<li>Bullion Cubes </li>');
 
 // before and after are for siblings
 // append and prepend are for parent
+document.getElementById('add').addEventListener('click', addElement);
 
 function addElement() {
   // add a new element
   // add a input text box
   // whenever the user are done add the element
+
+  $('#todo').append('<li><input type="text"></li>');
+  $('input').focus();
+  $('input').blur(function () {
+    $(this).parent().addClass('cool');
+    $(this).parent().click(changeStyle);
+    $(this).parent().text($(this).val());
+  });
 }
 
 // bind click with the event handler
@@ -30,6 +40,12 @@ function changeStyle() {
   if ($(this).hasClass('cool')) {
     $(this).removeClass('cool');
     $(this).addClass('complete');
+  } else if ($(this).hasClass('complete')) {
+    $(this).removeClass('complete');
+    $(this).addClass('cool');
+  } else if ($(this).hasClass('hot')) {
+    $(this).removeClass('hot');
+    $(this).addClass('cool');
   }
 }
 
@@ -38,4 +54,5 @@ document.getElementById('remove').addEventListener('click', removeElement);
 
 function removeElement() {
   // remove the marked elements  -- element with style complete
+  $('li.complete').remove();
 }
